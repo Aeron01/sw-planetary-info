@@ -1,17 +1,19 @@
-.App {
-  text-align: center;
+:root{
+  --titre:'Dela Gothic One', cursive;
+  --text:'Pathway Gothic One', sans-serif;
 }
 
 
-.row {
-  box-sizing: border-box;
-  color: rgb(33,37,41);
-  display: flex;
-  flex-wrap:wrap ;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-margin-left: -12px;
-margin-right: -12px;
-margin-top: 0px;
+body{
+  background-color: black;
+  font-family: var(--text);
+}
+
+h1{
+font-family: var(--titre);
+color: rgb(216,213,39);
+}
+
+.card-subtitle, .card-title{
+  color: black;
 }

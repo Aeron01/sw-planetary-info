@@ -1,35 +1,25 @@
-import { useState, useEffect } from 'react';
-//import Planets from './components/Planets'
+import { useState } from 'react';
+import "bootstrap/dist/css/bootstrap.css"
+import SWApp from './components/SWApp.js'
+import './App.css';
 
-function App({ data }) {
-  const [planets, setPlanets] = useState([]);
+function App() {
+  const [url, setUrl] = useState(`https://swapi.dev/api/planets/`)
+  const [nextPlanets, setNextPlanets] = useState('')
 
-  useEffect(() => {
-    async function fetchPlanet() {
-      let res = await fetch('https://swapi.dev/api/planets/?format=json');
-      let data = await res.json();
-      setPlanets(data.results);
-    }
-    fetchPlanet();
-  }, []);
+  const handleButtonNxt = () => {
+    setUrl(nextPlanets)
+  }
 
-  console.log(planets)
   return (
-    < body >
-      <div id="root" className="App">
-        <section className="container py-5">
-          <h1 className="mb-5">Planètes dans l'univer Star Wars</h1>
-          <div className="row">
-            <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
-              <article className="bg-warning p-3">
-                <h2>{planets.id}</h2>
-              </article>
-            </div>
-          </div>
-        </section>
+    <div className="App">
+      <h1 className="display-1 text-center my-5">Les planètes dans l'univer Star Wars</h1>
+      <div className="container">
+        <SWApp setNextPlanets={setNextPlanets} url={url} />
+        <button disabled={nextPlanets === null} onClick={handleButtonNxt} className="btn btn-info my5 me-2">{nextPlanets !== null ? "Plus de Planète" : "Fin de la liste"}</button>
       </div>
-    </body >
-  );
-}
+    </div>
+  )
+};
 
 export default App;
