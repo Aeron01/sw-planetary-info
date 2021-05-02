@@ -8,7 +8,7 @@ const SWApp = ({ url, nextPlanets, setNextPlanets }) => {
   const [apiCallCount, setApiCallCount] = useState(0)
 
   useEffect(() => {
-    //const urls = `https://swapi.dev/api/planets/`
+
     fetch(url)
       .then((response) => {
         setApiCallCount(a => a + 1)
@@ -16,11 +16,11 @@ const SWApp = ({ url, nextPlanets, setNextPlanets }) => {
 
           throw new Error("Information Introuvable")
         }
-        //console.log(response)
+
         return response.json()
       })
       .then((data) => {
-        //console.log(data)
+
         for (let elem of data.results) {
           names.push(elem)
         }
